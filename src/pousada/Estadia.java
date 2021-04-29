@@ -11,9 +11,6 @@ package pousada;
  */
 public class Estadia extends javax.swing.JInternalFrame {
 
-//    static Estadia getInstance() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
 
     private static Estadia myInstance;
 

@@ -104,6 +104,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu1.setText("Arquivo");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         jMenuItem1.setText("Estadias");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +136,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu3.add(jMenuItem5);
 
         jMenuItem4.setText("Produtos");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem4);
 
         jMenuBar1.add(jMenu3);
@@ -207,6 +217,26 @@ public class Menu extends javax.swing.JFrame {
         } else
             funcionario.moveToFront();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        Produtos produtos = Produtos.getInstance();
+        produtos.pack();
+         if (!produtos.isVisible()) {
+            jPanel1.add(produtos);
+            produtos.setVisible(true);
+        } else
+            produtos.moveToFront();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        Consumo consumo = Consumo.getInstance();
+        consumo.pack();
+         if (!consumo.isVisible()) {
+            jPanel1.add(consumo);
+            consumo.setVisible(true);
+        } else
+            consumo.moveToFront();
+    }//GEN-LAST:event_jMenu1ActionPerformed
 
     /**
      * @param args the command line arguments
