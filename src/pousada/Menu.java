@@ -119,6 +119,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem8.setText("Consumo");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem8);
         jMenu1.add(jSeparator1);
 
@@ -127,12 +132,27 @@ public class Menu extends javax.swing.JFrame {
         jMenu3.setText("Cadastro");
 
         jMenuItem2.setText("Hóspedes");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem2);
 
         jMenuItem3.setText("Quartos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuItem5.setText("Tipo de Quarto");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem5);
 
         jMenuItem4.setText("Produtos");
@@ -219,16 +239,20 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        Produtos produtos = Produtos.getInstance();
-        produtos.pack();
-         if (!produtos.isVisible()) {
-            jPanel1.add(produtos);
-            produtos.setVisible(true);
+        Produto produto = Produto.getInstance();
+        produto.pack();
+         if (!produto.isVisible()) {
+            jPanel1.add(produto);
+            produto.setVisible(true);
         } else
-            produtos.moveToFront();
+            produto.moveToFront();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         Consumo consumo = Consumo.getInstance();
         consumo.pack();
          if (!consumo.isVisible()) {
@@ -236,7 +260,40 @@ public class Menu extends javax.swing.JFrame {
             consumo.setVisible(true);
         } else
             consumo.moveToFront();
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Hospede hospede = Hospede.getInstance();
+        hospede.pack();
+         if (!hospede.isVisible()) {
+            jPanel1.add(hospede);
+            hospede.setVisible(true);
+        } else{
+            hospede.moveToFront();
+        }                                
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        Quarto quarto = Quarto.getInstance();
+        quarto.pack();
+         if (!quarto.isVisible()) {
+            jPanel1.add(quarto);
+            quarto.setVisible(true);
+        } else{
+            quarto.moveToFront();
+        }    
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        TipoDeQuarto tipoDeQuarto = TipoDeQuarto.getInstance();
+        tipoDeQuarto.pack();
+         if (!tipoDeQuarto.isVisible()) {
+            jPanel1.add(tipoDeQuarto);
+            tipoDeQuarto.setVisible(true);
+        } else{
+            tipoDeQuarto.moveToFront();
+        }    
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,7 +329,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
