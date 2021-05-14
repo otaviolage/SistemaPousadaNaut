@@ -36,21 +36,20 @@ public class Quarto extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblProduto = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        btnNovo = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -58,54 +57,35 @@ public class Quarto extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Quarto");
 
-        jLabel11.setText("TIPO DO QUARTO");
+        tblProduto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jLabel10.setText("CÓDIGO QUARTO");
+            },
+            new String [] {
 
-        jLabel2.setText("CONSULTA");
+            }
+        ));
+        jScrollPane1.setViewportView(tblProduto);
 
-        jLabel13.setText("NOME DO QUARTO");
+        jLabel3.setText("LISTAGEM DE QUARTOS");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField10)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(jLabel2))
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel13))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(85, 85, 85)
+                .addComponent(jLabel3)
+                .addContainerGap(103, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
@@ -117,6 +97,29 @@ public class Quarto extends javax.swing.JInternalFrame {
         jLabel9.setText("TIPO DO QUARTO");
 
         jLabel12.setText("NOME DO QUARTO");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnNovo.setText("Novo Tipo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,15 +135,25 @@ public class Quarto extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel7))
                             .addComponent(jLabel9)
                             .addComponent(jLabel8)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 15, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jTextField7))
+                            .addComponent(jTextField7)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnNovo)))
                         .addContainerGap())))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(btnCancelar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,13 +166,19 @@ public class Quarto extends javax.swing.JInternalFrame {
                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNovo))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnCancelar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,23 +199,52 @@ public class Quarto extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        // TODO add your handling code here:
+        TipoQuarto tipoQuarto = new TipoQuarto(null, true, null);
+        tipoQuarto.setVisible(true);
+        //atualizarTabela();
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        //        if (objetoProduto == null) {
+            //            objetoProduto = new entity.jpa.Produto();
+            //        }
+        //        objetoProduto.setDescricao(txtDescricao.getText());
+        //        objetoProduto.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+        //        objetoProduto.setValorUnitario(Double.parseDouble(txtValorUnitario.getText()));
+        //        objetoProduto.setCategoriaProduto((entity.jpa.CategoriaProduto) cmbCategoria.getSelectedItem());
+        //
+        //        if(objetoProduto == null)
+        //        new ProdutoDAO().inserir(objetoProduto);
+        //        else
+        //        new ProdutoDAO().editar(objetoProduto);
+
+        dispose();
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField10;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable tblProduto;
     // End of variables declaration//GEN-END:variables
 }

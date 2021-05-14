@@ -44,9 +44,9 @@ public class Menu extends javax.swing.JFrame {
 
         jToolBar1 = new javax.swing.JToolBar();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
-        jPanel1 = new javax.swing.JPanel();
         lblUsuarioLogado = new javax.swing.JLabel();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
+        decoratedDesktopPane12 = new models.DecoratedDesktopPane1();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -54,7 +54,6 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -67,26 +66,17 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pousada Naut");
+        setExtendedState(6);
+        setPreferredSize(new java.awt.Dimension(445, 342));
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
         jToolBar1.add(filler1);
-        jToolBar1.add(filler2);
 
         lblUsuarioLogado.setText("Usuário: ");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblUsuarioLogado, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 295, Short.MAX_VALUE)
-                .addComponent(lblUsuarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jToolBar1.add(lblUsuarioLogado);
+        jToolBar1.add(filler2);
 
         jMenu2.setText("Menu");
 
@@ -125,7 +115,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem8);
-        jMenu1.add(jSeparator1);
 
         jMenuBar1.add(jMenu1);
 
@@ -193,31 +182,26 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(193, 193, 193)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(193, Short.MAX_VALUE)))
+            .addComponent(decoratedDesktopPane12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(159, 159, 159)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(160, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(decoratedDesktopPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         Estadia estadia = Estadia.getInstance();
         estadia.pack();
         if (!estadia.isVisible()) {
-            jPanel1.add(estadia);
+            decoratedDesktopPane12.add(estadia);
             estadia.setVisible(true);
         } else
             estadia.moveToFront();
@@ -232,7 +216,7 @@ public class Menu extends javax.swing.JFrame {
         Funcionario funcionario = Funcionario.getInstance();
         funcionario.pack();
         if (!funcionario.isVisible()) {
-            jPanel1.add(funcionario);
+            decoratedDesktopPane12.add(funcionario);
             funcionario.setVisible(true);
         } else
             funcionario.moveToFront();
@@ -242,7 +226,7 @@ public class Menu extends javax.swing.JFrame {
         Produto produto = Produto.getInstance();
         produto.pack();
          if (!produto.isVisible()) {
-            jPanel1.add(produto);
+            decoratedDesktopPane12.add(produto);
             produto.setVisible(true);
         } else
             produto.moveToFront();
@@ -256,7 +240,7 @@ public class Menu extends javax.swing.JFrame {
         Consumo consumo = Consumo.getInstance();
         consumo.pack();
          if (!consumo.isVisible()) {
-            jPanel1.add(consumo);
+            decoratedDesktopPane12.add(consumo);
             consumo.setVisible(true);
         } else
             consumo.moveToFront();
@@ -266,7 +250,7 @@ public class Menu extends javax.swing.JFrame {
         Hospede hospede = Hospede.getInstance();
         hospede.pack();
          if (!hospede.isVisible()) {
-            jPanel1.add(hospede);
+            decoratedDesktopPane12.add(hospede);
             hospede.setVisible(true);
         } else{
             hospede.moveToFront();
@@ -277,7 +261,7 @@ public class Menu extends javax.swing.JFrame {
         Quarto quarto = Quarto.getInstance();
         quarto.pack();
          if (!quarto.isVisible()) {
-            jPanel1.add(quarto);
+            decoratedDesktopPane12.add(quarto);
             quarto.setVisible(true);
         } else{
             quarto.moveToFront();
@@ -285,14 +269,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        TipoDeQuarto tipoDeQuarto = TipoDeQuarto.getInstance();
-        tipoDeQuarto.pack();
-         if (!tipoDeQuarto.isVisible()) {
-            jPanel1.add(tipoDeQuarto);
-            tipoDeQuarto.setVisible(true);
-        } else{
-            tipoDeQuarto.moveToFront();
-        }    
+        TipoQuarto tipoQuarto = new TipoQuarto(null, true, null);
+        tipoQuarto.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
@@ -330,6 +308,7 @@ public class Menu extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private models.DecoratedDesktopPane1 decoratedDesktopPane12;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.JMenu jMenu1;
@@ -349,8 +328,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblUsuarioLogado;
     // End of variables declaration//GEN-END:variables

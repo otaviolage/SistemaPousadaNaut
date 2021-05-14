@@ -1,11 +1,13 @@
 package pousada;
 
+import dao.jdbc.UsuarioDAO;
 import javax.swing.JOptionPane;
 
 public class Autenticacao extends javax.swing.JDialog {
 
     private boolean autenticado = false;
     private String usuarioAutenticado = "";
+    private UsuarioDAO usuarioDAO;
 
     public boolean getAutenticado() {
         return autenticado;
@@ -23,6 +25,7 @@ public class Autenticacao extends javax.swing.JDialog {
     public Autenticacao(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        usuarioDAO = new UsuarioDAO();
     }
 
     /**
@@ -158,7 +161,7 @@ public class Autenticacao extends javax.swing.JDialog {
         // TODO add your handling code here:
         String senha = new String(txtSenha.getPassword());
         String usuario = txtUsuario.getText();
-        if (usuario.equals("rafael") && senha.equals("123")) {
+        if (usuarioDAO.autenticar(usuario, senha)) {
             autenticado = true;
             usuarioAutenticado = usuario;
             dispose();
