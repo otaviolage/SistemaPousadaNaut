@@ -5,6 +5,13 @@
  */
 package pousada;
 
+import dao.jpa.ProdutoDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
+import utils.TableModelCreator;
+
 /**
  *
  * @author Otávio
@@ -18,7 +25,8 @@ public class Produto extends javax.swing.JInternalFrame {
         initComponents();
     }
     private static Produto myInstance;
-
+    private int idSelecionado;
+    
     public static Produto getInstance() {
         if (myInstance == null) {
             myInstance = new Produto();
@@ -47,6 +55,33 @@ public class Produto extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Produto");
         setToolTipText("");
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -57,9 +92,19 @@ public class Produto extends javax.swing.JInternalFrame {
 
         btnEditar.setText("Editar");
         btnEditar.setEnabled(false);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
         btnExcluir.setEnabled(false);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         tblProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,6 +114,11 @@ public class Produto extends javax.swing.JInternalFrame {
 
             }
         ));
+        tblProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProdutoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblProduto);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -82,8 +132,8 @@ public class Produto extends javax.swing.JInternalFrame {
                 .addComponent(btnEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExcluir)
-                .addGap(140, 140, 140))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,8 +152,8 @@ public class Produto extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,7 +170,72 @@ public class Produto extends javax.swing.JInternalFrame {
         //atualizarTabela();
     }//GEN-LAST:event_btnNovoActionPerformed
 
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        // TODO add your handling code here:
+        atualizarTabela();
+    }//GEN-LAST:event_formInternalFrameActivated
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        if (idSelecionado > 0) {
+            entity.jpa.Produto produto = new ProdutoDAO().selecionarPorCodigo(idSelecionado);
+            CadastroProduto tela = new CadastroProduto(null, true, produto);
+            tela.setVisible(true);
+            atualizarTabela();
+            btnEditar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void tblProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutoMouseClicked
+        // TODO add your handling code here:
+        JTable tabela = (JTable) evt.getSource();
+        int linha = tabela.rowAtPoint(evt.getPoint());
+//        int coluna = tabela.columnAtPoint(evt.getPoint());
+//        JOptionPane.showMessageDialog(this, tabela.getValueAt(linha, coluna));
+        for (int i = 0; i < tabela.getModel().getColumnCount(); i++) {
+            String nomeColuna = tabela.getModel().getColumnName(i);
+            if (nomeColuna.trim().equals("Id")) {
+                idSelecionado = Integer.parseInt(tabela.getValueAt(linha, i) + "");
+                break;
+            }
+        }
+        btnEditar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+    }//GEN-LAST:event_tblProdutoMouseClicked
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Atenção", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+            entity.jpa.Produto produto = produtoDAO.selecionarPorCodigo(idSelecionado);
+            produtoDAO.excluir(produto);
+            atualizarTabela();
+            JOptionPane.showMessageDialog(this, "Excluído com sucesso", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            btnEditar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formFocusGained
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        atualizarTabela();
+    }//GEN-LAST:event_formMouseClicked
+
+    private void atualizarTabela() {
+        try {
+            List<entity.jpa.Produto> listaProdutos = new ProdutoDAO().selecionarTodos();
+            TableModel tableModelProdutos = TableModelCreator.createTableModel(entity.jpa.Produto.class, listaProdutos, null);
+            tblProduto.setModel(tableModelProdutos);
+        } catch (Exception ex) {
+
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;

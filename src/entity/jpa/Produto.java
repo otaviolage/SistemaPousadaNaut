@@ -25,34 +25,32 @@ public class Produto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
-    @Column(name="descricao")
-    private String descricao;
+    int id;
+    @Column(name="nomeProduto")
+    private String nomeProduto;
     @Column(name="quantidade")
     private int quantidade;
     @Column(name="valorUnitario")
     private double valorUnitario;
-    @ManyToOne
-    @JoinColumn(name="categoriaProduto_id")
-    private CategoriaProduto categoriaProduto;
 
-    public Produto(int id, String descricao, int quantidade, double valorUnitario, CategoriaProduto categoriaProduto) {
+
+    public Produto(int id, String nomeProduto, int quantidade, double valorUnitario) {
         this.id = id;
-        this.descricao = descricao;
+        this.nomeProduto = nomeProduto;
         this.quantidade = quantidade;
         this.valorUnitario = valorUnitario;
-        this.categoriaProduto = categoriaProduto;
     }
 
     public Produto() {
     }
 
-    public String getDescricao() {
-        return descricao;
+
+    public String getNomeProduto() {
+        return nomeProduto;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
     }
 
     public int getQuantidade() {
@@ -69,14 +67,6 @@ public class Produto implements Serializable {
 
     public void setValorUnitario(double valorUnitario) {
         this.valorUnitario = valorUnitario;
-    }
-
-    public CategoriaProduto getCategoriaProduto() {
-        return categoriaProduto;
-    }
-
-    public void setCategoriaProduto(CategoriaProduto categoriaProduto) {
-        this.categoriaProduto = categoriaProduto;
     }
     
     public int getId() {

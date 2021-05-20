@@ -5,7 +5,9 @@
  */
 package pousada;
 
+import dao.jpa.ProdutoDAO;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
 /**
@@ -18,9 +20,10 @@ public class CadastroProduto extends javax.swing.JDialog {
      * Creates new form CadastroProduto
      */
 
-    private Produto objetoProduto;
+    private entity.jpa.Produto objetoProduto;
+    
 
-    public CadastroProduto(java.awt.Frame parent, boolean modal, Produto objetoProduto) {
+    public CadastroProduto(java.awt.Frame parent, boolean modal, entity.jpa.Produto objetoProduto) {
         super(parent, modal);
         this.objetoProduto = objetoProduto;
         initComponents();
@@ -43,13 +46,16 @@ public class CadastroProduto extends javax.swing.JDialog {
         txtQuantidade = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtValorUnitario = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        txtValorUnitario1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Produto");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setToolTipText("");
 
@@ -57,7 +63,7 @@ public class CadastroProduto extends javax.swing.JDialog {
 
         txtCodigo.setEnabled(false);
 
-        jLabel2.setText("Descrição");
+        jLabel2.setText("Nome do Produto");
 
         txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,15 +73,13 @@ public class CadastroProduto extends javax.swing.JDialog {
 
         jLabel3.setText("Quantidade");
 
-        jLabel4.setText("Custo");
+        jLabel4.setText("Valor Unitário");
 
         txtValorUnitario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorUnitarioActionPerformed(evt);
             }
         });
-
-        jLabel5.setText("Preço");
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,41 +95,28 @@ public class CadastroProduto extends javax.swing.JDialog {
             }
         });
 
-        txtValorUnitario1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtValorUnitario1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(txtValorUnitario1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtValorUnitario, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtQuantidade, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDescricao))))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(txtValorUnitario, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                    .addComponent(txtQuantidade)
+                    .addComponent(txtCodigo)
+                    .addComponent(txtDescricao, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(28, 28, 28)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
-                .addGap(48, 48, 48))
+                .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,11 +137,7 @@ public class CadastroProduto extends javax.swing.JDialog {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtValorUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addGap(7, 7, 7)
-                .addComponent(txtValorUnitario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
@@ -165,7 +152,9 @@ public class CadastroProduto extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,19 +170,19 @@ public class CadastroProduto extends javax.swing.JDialog {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-//        if (objetoProduto == null) {
-//            objetoProduto = new entity.jpa.Produto();
-//        }
-//        objetoProduto.setDescricao(txtDescricao.getText());
-//        objetoProduto.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
-//        objetoProduto.setValorUnitario(Double.parseDouble(txtValorUnitario.getText()));
-//        objetoProduto.setCategoriaProduto((entity.jpa.CategoriaProduto) cmbCategoria.getSelectedItem());
-//
-//        if(objetoProduto == null)
-//        new ProdutoDAO().inserir(objetoProduto);
-//        else
-//        new ProdutoDAO().editar(objetoProduto);
-
+        if (objetoProduto == null) {
+            objetoProduto = new entity.jpa.Produto();
+        }
+        objetoProduto.setNomeProduto(txtDescricao.getText());
+        objetoProduto.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+        objetoProduto.setValorUnitario(Double.parseDouble(txtValorUnitario.getText()));
+        
+        if(objetoProduto == null)
+            new ProdutoDAO().inserir(objetoProduto);
+        else
+            new ProdutoDAO().editar(objetoProduto);
+        
+        JOptionPane.showMessageDialog(this, "Salvo com sucesso", "Atenção", JOptionPane.INFORMATION_MESSAGE);
         dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -202,9 +191,15 @@ public class CadastroProduto extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void txtValorUnitario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorUnitario1ActionPerformed
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorUnitario1ActionPerformed
+        if(objetoProduto != null){
+            txtCodigo.setText(objetoProduto.getId()+"");
+            txtDescricao.setText(objetoProduto.getNomeProduto());
+            txtQuantidade.setText(objetoProduto.getQuantidade()+"");
+            txtValorUnitario.setText(objetoProduto.getValorUnitario()+"");
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     private void atualizarTabela() {
 //        try {
@@ -264,12 +259,10 @@ public class CadastroProduto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtQuantidade;
     private javax.swing.JTextField txtValorUnitario;
-    private javax.swing.JTextField txtValorUnitario1;
     // End of variables declaration//GEN-END:variables
 }

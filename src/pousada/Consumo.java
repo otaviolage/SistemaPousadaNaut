@@ -5,6 +5,11 @@
  */
 package pousada;
 
+import dao.jpa.ProdutoDAO;
+import java.util.List;
+import javax.swing.table.TableModel;
+import utils.TableModelCreator;
+
 /**
  *
  * @author Otávio
@@ -40,7 +45,7 @@ public class Consumo extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblProduto2 = new javax.swing.JTable();
+        tblConsumo = new javax.swing.JTable();
         btnNovo1 = new javax.swing.JButton();
         btnEditar1 = new javax.swing.JButton();
         btnExcluir1 = new javax.swing.JButton();
@@ -69,10 +74,27 @@ public class Consumo extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Consumo");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel2.setText("CONSUMO DO HÓSPEDE");
 
-        tblProduto2.setModel(new javax.swing.table.DefaultTableModel(
+        tblConsumo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -80,7 +102,7 @@ public class Consumo extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane3.setViewportView(tblProduto2);
+        jScrollPane3.setViewportView(tblConsumo);
 
         btnNovo1.setText("Novo Hóspede");
         btnNovo1.addActionListener(new java.awt.event.ActionListener() {
@@ -268,7 +290,22 @@ public class Consumo extends javax.swing.JInternalFrame {
         //atualizarTabela();
     }//GEN-LAST:event_btnNovo2ActionPerformed
 
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        // TODO add your handling code here:
+        atualizarTabelaProduto();
+    }//GEN-LAST:event_formInternalFrameActivated
 
+
+    private void atualizarTabelaProduto() {
+        try {
+            List<entity.jpa.Produto> listaProdutos = new ProdutoDAO().selecionarTodos();
+            TableModel tableModelProdutos = TableModelCreator.createTableModel(entity.jpa.Produto.class, listaProdutos, null);
+            tblProduto.setModel(tableModelProdutos);
+        } catch (Exception ex) {
+
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnExcluir1;
@@ -285,8 +322,8 @@ public class Consumo extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tblConsumo;
     private javax.swing.JTable tblProduto;
     private javax.swing.JTable tblProduto1;
-    private javax.swing.JTable tblProduto2;
     // End of variables declaration//GEN-END:variables
 }
