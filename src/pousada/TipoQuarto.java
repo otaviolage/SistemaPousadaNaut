@@ -23,9 +23,9 @@ public class TipoQuarto extends javax.swing.JDialog {
         initComponents();
     }
 
-    private Quarto objetoQuarto;
+    private CadastroQuarto objetoQuarto;
 
-    public TipoQuarto(java.awt.Frame parent, boolean modal, Quarto objetoQuarto) {
+    public TipoQuarto(java.awt.Frame parent, boolean modal, CadastroQuarto objetoQuarto) {
         super(parent, modal);
         this.objetoQuarto = objetoQuarto;
         initComponents();

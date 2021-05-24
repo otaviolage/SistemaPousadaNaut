@@ -9,22 +9,22 @@ package pousada;
  *
  * @author Otávio
  */
-public class Quarto extends javax.swing.JInternalFrame {
+public class CadastroQuarto extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Quarto
      */
-    public Quarto() {
+    public CadastroQuarto(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
-    private static Quarto myInstance;
+    private CadastroQuarto objetoQuarto;
 
-    public static Quarto getInstance() {
-        if (myInstance == null) {
-            myInstance = new Quarto();
-        }
-        return myInstance;
+    public CadastroQuarto(java.awt.Frame parent, boolean modal, CadastroQuarto objetoQuarto) {
+        super(parent, modal);
+        this.objetoQuarto = objetoQuarto;
+        initComponents();
     }
     /**
      * This method is called from within the constructor to initialize the form.

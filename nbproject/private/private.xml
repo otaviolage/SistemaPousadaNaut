@@ -3,13 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projetos/Pousada/src/pousada/Hospede.java</file>
-            <file>file:/D:/Projetos/Pousada/src/pousada/Menu.java</file>
-            <file>file:/D:/Projetos/Pousada/src/entity/jpa/Hospede.java</file>
-            <file>file:/D:/Projetos/Pousada/src/entity/jpa/Produto.java</file>
-            <file>file:/D:/Projetos/Pousada/src/pousada/Produto.java</file>
-            <file>file:/D:/Projetos/Pousada/src/pousada/CadastroProduto.java</file>
-            <file>file:/D:/Projetos/Pousada/src/pousada/Autenticacao.java</file>
+            <file>file:/C:/Users/mathe/OneDrive/Documentos/GitHub/SistemaPousadaNaut/src/entity/jpa/Produto.java</file>
+            <file>file:/C:/Users/mathe/OneDrive/Documentos/GitHub/SistemaPousadaNaut/src/pousada/TipoQuarto.java</file>
+            <file>file:/C:/Users/mathe/OneDrive/Documentos/GitHub/SistemaPousadaNaut/src/pousada/Quartos.java</file>
+            <file>file:/C:/Users/mathe/OneDrive/Documentos/GitHub/SistemaPousadaNaut/src/pousada/Consumo.java</file>
+            <file>file:/C:/Users/mathe/OneDrive/Documentos/GitHub/SistemaPousadaNaut/src/pousada/CadastroProduto.java</file>
+            <file>file:/C:/Users/mathe/OneDrive/Documentos/GitHub/SistemaPousadaNaut/src/pousada/Produto.java</file>
+            <file>file:/C:/Users/mathe/OneDrive/Documentos/GitHub/SistemaPousadaNaut/src/pousada/CadastroConsumo.java</file>
+            <file>file:/C:/Users/mathe/OneDrive/Documentos/GitHub/SistemaPousadaNaut/src/pousada/Autenticacao.java</file>
+            <file>file:/C:/Users/mathe/OneDrive/Documentos/GitHub/SistemaPousadaNaut/src/pousada/CadastroQuarto.java</file>
         </group>
     </open-files>
 </project-private>

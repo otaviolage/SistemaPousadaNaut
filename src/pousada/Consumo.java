@@ -112,6 +112,11 @@ public class Consumo extends javax.swing.JInternalFrame {
         });
 
         btnEditar1.setText("Editar");
+        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar1ActionPerformed(evt);
+            }
+        });
 
         btnExcluir1.setText("Excluir");
         btnExcluir1.setEnabled(false);
@@ -294,6 +299,10 @@ public class Consumo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         atualizarTabelaProduto();
     }//GEN-LAST:event_formInternalFrameActivated
+
+    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditar1ActionPerformed
 
 
     private void atualizarTabelaProduto() {
