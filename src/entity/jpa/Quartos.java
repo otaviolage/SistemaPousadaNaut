@@ -6,6 +6,7 @@
 package entity.jpa;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,21 +21,48 @@ public class Quartos implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    int id;
+    @Column(name="Quarto")
+    private String quarto;
+    @Column(name="Tipo de Quarto")
+    private int tpQuarto;
 
-    public Long getId() {
+    public Quartos(int id, String quarto, int tpQuarto) {
+        this.id = id;
+        this.quarto = quarto;
+        this.tpQuarto = tpQuarto;
+    }
+    
+    public String getQuarto() {
+        return quarto;
+    }
+
+    public void setQuarto(String quarto) {
+        this.quarto = quarto;
+    }
+
+    public int getTpQuarto() {
+        return tpQuarto;
+    }
+
+    public void setTpQuarto(int tpQuarto) {
+        this.tpQuarto = tpQuarto;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (int) id;
         return hash;
     }
 
@@ -45,7 +73,7 @@ public class Quartos implements Serializable {
             return false;
         }
         Quartos other = (Quartos) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (this.id != other.id) {
             return false;
         }
         return true;

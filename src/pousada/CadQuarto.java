@@ -5,6 +5,13 @@
  */
 package pousada;
 
+import dao.jpa.QuartosDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
+import utils.TableModelCreator;
+
 /**
  *
  * @author mathe
@@ -30,7 +37,7 @@ public class CadQuarto extends javax.swing.JDialog {
 
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblProduto = new javax.swing.JTable();
+        tblQuartos = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -45,8 +52,18 @@ public class CadQuarto extends javax.swing.JDialog {
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
-        tblProduto.setModel(new javax.swing.table.DefaultTableModel(
+        tblQuartos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -54,7 +71,7 @@ public class CadQuarto extends javax.swing.JDialog {
 
             }
         ));
-        jScrollPane1.setViewportView(tblProduto);
+        jScrollPane1.setViewportView(tblQuartos);
 
         jLabel3.setText("LISTAGEM DE QUARTOS");
 
@@ -218,6 +235,25 @@ public class CadQuarto extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        atualizarTabela();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        atualizarTabela();
+    }//GEN-LAST:event_formFocusGained
+
+    private void atualizarTabela() {
+        try {
+            List<entity.jpa.Quartos> listaQuartos = new QuartosDAO().selecionarTodos();
+            TableModel tableModelQuartos = TableModelCreator.createTableModel(entity.jpa.Quartos.class, listaQuartos, null);
+            tblQuartos.setModel(tableModelQuartos);
+        } catch (Exception ex) {
+
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -275,6 +311,6 @@ public class CadQuarto extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTable tblProduto;
+    private javax.swing.JTable tblQuartos;
     // End of variables declaration//GEN-END:variables
 }

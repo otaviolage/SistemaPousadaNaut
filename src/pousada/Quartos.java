@@ -61,6 +61,12 @@ public class Quartos extends javax.swing.JInternalFrame {
         ));
         jScrollPane3.setViewportView(tblConsumo);
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Quartos");
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("CÓDIGO QUARTO");
 
