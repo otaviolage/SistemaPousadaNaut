@@ -14,18 +14,18 @@ public class CadastroQuarto extends javax.swing.JInternalFrame {
     /**
      * Creates new form Quarto
      */
-    public CadastroQuarto(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-    }
-
-    private CadastroQuarto objetoQuarto;
-
-    public CadastroQuarto(java.awt.Frame parent, boolean modal, CadastroQuarto objetoQuarto) {
-        super(parent, modal);
-        this.objetoQuarto = objetoQuarto;
-        initComponents();
-    }
+//    public CadastroQuarto(java.awt.Frame parent, boolean modal) {
+//        super(parent, modal);
+//        initComponents();
+//    }
+//
+//    private CadastroQuarto objetoQuarto;
+//
+//    public CadastroQuarto(java.awt.Frame parent, boolean modal, CadastroQuarto objetoQuarto) {
+//        super(parent, modal);
+//        this.objetoQuarto = objetoQuarto;
+//        initComponents();
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

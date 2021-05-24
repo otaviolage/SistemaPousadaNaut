@@ -17,7 +17,7 @@ import utils.TableModelCreator;
  */
 public class Quartos extends javax.swing.JInternalFrame {
 
-       public Quartos() {
+    public Quartos() {
         initComponents();
     }
 

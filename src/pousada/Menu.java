@@ -258,7 +258,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        CadastroQuarto quarto = CadastroQuarto.getInstance();
+        Quartos quarto = Quartos.getInstance();
         quarto.pack();
          if (!quarto.isVisible()) {
             decoratedDesktopPane12.add(quarto);
