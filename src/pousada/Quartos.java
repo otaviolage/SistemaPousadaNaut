@@ -61,8 +61,6 @@ public class Quartos extends javax.swing.JInternalFrame {
         ));
         jScrollPane3.setViewportView(tblConsumo);
 
-        painelbackground1.setImg((new ImageIcon(getClass().getResource("/img/greenscreen.png"))));
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("CÓDIGO QUARTO");
 
@@ -175,9 +173,9 @@ public class Quartos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void btnExcluir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_btnExcluir2ActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
@@ -186,9 +184,9 @@ public class Quartos extends javax.swing.JInternalFrame {
         //atualizarTabela();
     }//GEN-LAST:event_btnNovoActionPerformed
 
-    private void btnExcluir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir2ActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluir2ActionPerformed
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

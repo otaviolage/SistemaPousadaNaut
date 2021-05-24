@@ -59,11 +59,6 @@
   </Layout>
   <SubComponents>
     <Container class="pousada.Painelbackground" name="painelbackground1">
-      <Properties>
-        <Property name="img" type="javax.swing.ImageIcon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="(new ImageIcon(getClass().getResource(&quot;/img/greenscreen.png&quot;)))" type="code"/>
-        </Property>
-      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
